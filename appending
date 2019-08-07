@@ -1,0 +1,28 @@
+# import libraries
+import pandas as pd
+import os
+
+# list files
+path = os.getcwd()
+path += '/data/append_data'
+files = os.listdir(path)  # a list of strings of file names
+
+# initialize empty dataframe
+df = pd.DataFrame()
+
+# loop over list of files to append to empty dataframe
+for f in files:
+    if f.endswith('.xlsx'):
+        filepath = os.path.join(path, f)
+        data = pd.read_excel(filepath, usecols=[0,1])  # read in first sheet automatically and the first two columns
+        df = df.append(data)
+        
+# sort MIDs
+df.sort_values('MIDs', inplace=True)
+
+# dedupe only if MIDs and Merchant Names are the same
+df.drop_duplicates(['MIDs', 'Merchant Names'], keep='first', inplace=True)
+
+# export result to csv file
+output_path = r'C:/Users/.../export_df.csv'
+df.to_csv(output_path, index=None, header=True)
