@@ -15,13 +15,13 @@ df2 = pd.read_excel(df2)
 
 # join df1 and df2, then remove rows that match df2 values
 result = pd.merge(df1, df2, how='outer', indicator=True)
-result = result[result['_merge'] == 'left_only'][['switch_datetime', 'card_acceptor_id', 'merchant_name', 'card_number', 'expiration_date']]
+result = result[result['_merge'] == 'left_only'][['...', '...', '...', '...', '...']]
 
 # drop duplicates only if the combination of the columns are the same
-# result.drop_duplicates(['card_number', 'expiration_date', 'card_acceptor_id', 'merchant_name'], keep='first', inplace=True)
+# result.drop_duplicates(['...', '...', '...', '...'], keep='first', inplace=True)
 
 # sort by Date
-result.sort_values('switch_datetime', inplace=True)
+result.sort_values('...', inplace=True)
 
 # export result to csv file
 output_path = r'/Users/.../export_result_test2.csv'
