@@ -21,7 +21,7 @@ for f in files:
 df.sort_values('MIDs', inplace=True)
 
 # dedupe only if MIDs and Merchant Names are the same
-df.drop_duplicates(['MIDs', 'Merchant Names'], keep='first', inplace=True)
+df.drop_duplicates(['...', '...'], keep='first', inplace=True)
 
 # export result to csv file
 output_path = r'C:/Users/.../export_df.csv'
